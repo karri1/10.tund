@@ -1,6 +1,6 @@
 <?php
 
-require("../../config.php");
+require("/home/karinrik/config.php");
 
 /* ALUSTAN SESSIOONI */	
 	session_start();
@@ -10,7 +10,7 @@ require("../../config.php");
 	$mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);	
 
 // KLASSID
-	require("Helper.class.php");
+	require("../class/Helper.class.php");
 	$Helper = new Helper();
 
 	
