@@ -137,7 +137,14 @@ if ( isset($_POST["plate"]) &&
 			$html .= "<td>".$c->id."</td>";
 			$html .= "<td>".$c->plate."</td>";
 			$html .= "<td style='background-color:".$c->carColor."'>".$c->carColor."</td>";
-			$html .= "<td><a class='btn btn-default'><span class = 'glyphicon glyphicon-pencil'></span> Muuda</a></td>";
+			$html .= "<td>
+							<a href='edit.php?id=".$c->id."' class='btn btn-default'>
+							
+								<span class='glyphicon glyphicon-pencil'></span>
+								Muuda
+								
+							</a>
+						</td>";
 			
 		$html .= "</tr>";
 	}
