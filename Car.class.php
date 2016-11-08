@@ -26,7 +26,22 @@ class Car {
 		
 	}
 		
-	function get($q) {
+	function get($q, $sort, $direction) {
+		
+		//mis sort ja järjekord
+		$allowedSortOptions = ["id", "plate", "color"];
+		//kas sort on lubatud valikute sees
+		if(!in_array($sort, $allowedSortOptions)){
+			$sort = "id";
+		}
+		echo "Sorteerin: ".$sort." ";
+		
+		$orderBy= "ASC";
+		if($direction == "descending"){
+			$orderBy= "DESC";
+		}
+		echo "Järjekord: ".$orderBy." ";
+		
 		
 		if($q == ""){
 		
@@ -36,6 +51,7 @@ class Car {
 				SELECT id, plate, color
 				FROM cars_and_colors
 				WHERE deleted IS NULL
+				ORDER BY $sort $orderBy
 			");
 		
 		}else{
@@ -51,6 +67,7 @@ class Car {
 				FROM cars_and_colors
 				WHERE deleted IS NULL AND
 				(plate LIKE ? OR color LIKE ?)
+				ORDER BY $sort $orderBy
 			");
 			$stmt->bind_param("ss", $searchword, $searchword);
 		
